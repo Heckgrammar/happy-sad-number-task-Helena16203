@@ -25,6 +25,28 @@
             //The program should take a number as input and output whether the number is happy or sad
             //test your program with the inputs of 19 and 20
             //show your output in the readme file
+
+            Console.Write("Please enter a number: ");
+            string UserInput = Console.ReadLine(); //use this for outputs later
+            int UserNum = Convert.ToInt32(UserInput); //use this for calculations
+            
+            for (int i = 0; i < 100; i++) //100 so there isn't an infinite loop but it still goes on for long enough
+            {
+                int sum = 0;
+                while (UserNum > 0)
+                {
+                    int digit = UserNum % 10; //gives us the last digit
+                    sum += digit * digit; //gets the square
+                    UserNum /= 10; //removes the last digit from UserNum
+                }
+                UserNum = sum; //prepares for the next iteration
+                if (UserNum == 1)
+                {
+                    Console.WriteLine(UserInput + " is a Happy Number!");
+                    return; //prevents loop from going the 100-ish times
+                }
+            }
+            Console.WriteLine(UserInput + " is a Sad Number.");
         }
     }
 }
